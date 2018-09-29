@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Footer with social icons</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-with-social-icons.css">
+</head>
+
+<body>
+<div class="content">
+</div>
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 myCols">
+                    <h5>Shortcut Links</h5>
+                    <ul>
+                        <li><a><%= link_to 'Sign out', logout_path, method: "delete" %></a></li>
+                        <li><a><%= link_to 'Sign up', signup_path %></a></li>
+                        <li><a><%= link_to 'Sign in', login_path %></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Logged in Links</h5>
+                    <ul>
+                        <li><a><%= link_to 'Posts', '/posts' %></a></li>
+                        <li><a><%= link_to 'Users', users_path %></a></li>
+                        <li><a><%= link_to 'Help', help_path %></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>User Options</h5>
+                    <ul>
+                        <li><a><%= link_to 'Profile', current_user %></a></li>
+                        <li><a><% if logged_in? %>
+                        <%= link_to 'Profile Settings', edit_user_path(current_user) %>
+                        <% else %>
+                        <a><%= link_to 'Log in to use this link', login_path%></a>
+                        <% end%>
+                        </a></li>
+                        <li><a><%= link_to 'Articles'%></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Extras</h5>
+                    <ul>
+                        <li><a href="https://www.theodinproject.com/lessons/final-project">Project of The odin project</a></li>
+                        <li><a href="https://github.com/AREEBAISHTIAQ/growlithe">Github Repository</a></li>
+                        <li>Created with ruby on rails</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="social-networks">
+            <a href="https://github.com/AREEBAISHTIAQ/" class="twitter"><i class="fa fa-github"></i></a>
+            <a href="https://codepen.io/areebaishtiaq/" class="facebook"><i class="fa fa-codepen"></i></a>
+            <a href="https://forum.theodinproject.com/u/AREEBAISHTIAQ/summary" class="google"><img src="https://www.theodinproject.com/assets/odin-logo-94557650fea28e24cc04263ece9c08ab5956e0d344faa4d03cdb732e9f9983d4.svg", class="img"></a>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2018 Copyright Text </p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>

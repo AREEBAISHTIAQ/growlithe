@@ -1,0 +1,32 @@
+<div class="profile">
+<h1> My Profile </h1>
+<%= image_tag @user.picture.url if @user.picture? %>
+<h4>Username: <%=h @user.name %></h4>
+<p><%= link_to "Find Friends", users_path %></p>
+
+<h2 class="friending">Your Friends:</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+  <li>
+    <%= h friendship.friend.name %>
+    (<%= link_to "remove", friendship, :method => :delete %>)
+  </li>
+  <% end %>  
+</ul>
+<h2 class="friending">Users Who Have Befriended You:</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+  <li><%= h user.name %></li>
+  <% end %>
+</ul>
+</div>
+
+<div class="col-lg-9.5 profile">
+    <% if @user.posts.any? %>
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </div>

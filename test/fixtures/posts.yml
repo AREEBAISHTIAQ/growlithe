@@ -1,0 +1,10 @@
+pink:
+  content: "Pink is a color and you can see it if you are not color blind"
+  created_at: <%= 10.minutes.ago %>
+  user: admin user
+
+most_recent:
+  content: "Writing a short test"
+  created_at: <%= Time.zone.now %>
+  user: admin user
+

@@ -1,0 +1,10 @@
+<h1>Growlithe</h1>
+<p>hi <%= @user.name %></p>
+<p>
+welcome to Growlithe,
+Thank you for signing up on Growlithe, Please click on the link below
+to activate your account 
+</p>
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+ email: @user.email) %>

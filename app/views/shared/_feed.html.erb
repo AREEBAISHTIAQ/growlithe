@@ -1,0 +1,8 @@
+<div class="feed profile">
+<% if @feed_items.any? %>
+  <ol class="posts">
+    <%= render @feed_items %>
+  </ol>
+  <%= will_paginate @feed_items %>
+<% end %>
+</div>

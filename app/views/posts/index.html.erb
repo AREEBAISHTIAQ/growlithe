@@ -1,0 +1,30 @@
+<div class= "contain profile">
+<h1>All Posts</h1>
+    <% @posts.each do |post| %>
+    <div class="post-container">
+    <strong>Author:</strong><%= post.user.name %><br>
+    <span class="content"><strong>Posted: </strong><%= post.content %></span>
+  <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    (<%= time_ago_in_words(post.created_at) %> ago.)
+    </span><br>
+    <%= image_tag post.picture.url if post.picture? %><br><br>
+    <p class="pre-like"><%= pre_like = post.likes.find { |like| like.user_id == current_user.id} %></p>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_like_path(post, pre_like), class: 'btn btn-primary', method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(post), class: 'btn btn-primary', method: :post %>
+<% end %><br>
+<p>
+
+  <h3>Comments</h3>
+
+<%= form_for [post, Comment.new] do |f| %>
+<%= f.text_area :body, placeholder: "Add a comment" %><br/>
+<%= f.submit "Add Comment", class: 'btn-primary btn', method: :GET %>
+<% end %>
+<ul>
+  <%= render(partial: 'comments/comment', collection: post.comments) %>
+</ul><br><hr>
+    </div>
+    <% end %>
+</div>
